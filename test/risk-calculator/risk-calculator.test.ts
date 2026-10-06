@@ -21,14 +21,12 @@ describe('RiskCalculator LOW risk', () => {
   })
 
   test('returns LOW when the balance is zero', () => {
-    let balance: number = application.balance;
-    balance = 0;
+    application.balance = 0;
     expect(calculator.calculate(application)).toBe(RiskClass.LOW);
   })
 
   test('returns LOW when the balance is exactly 10000', () => {
-    let balance: number = application.balance;
-    balance = 10000;
+    application.balance = 10000;
     expect(calculator.calculate(application)).toBe(RiskClass.LOW);
   })
 })
@@ -47,14 +45,12 @@ describe('RiskCalculator MEDIUM risk', () => {
   })
 
   test('returns MEDIUM when the balance is just above 10000', () => {
-    let balance: number = application.balance;
-    balance = 10001;
+    application.balance = 10001;
     expect(calculator.calculate(application)).toBe(RiskClass.MEDIUM);
   })
 
   test('returns MEDIUM when the balance is exactly 25000', () => {
-    let balance: number = application.balance;
-    balance = 25000;
+    application.balance = 25000;
     expect(calculator.calculate(application)).toBe(RiskClass.MEDIUM);
   })
 })
@@ -73,20 +69,17 @@ describe('RiskCalculator HIGH risk', () => {
   })
 
   test('returns HIGH when the balance is just above 25000', () => {
-    let balance: number = application.balance;
-    balance = 25001;
+    application.balance = 25001;
     expect(calculator.calculate(application)).toBe(RiskClass.HIGH);
   })
 
   test('returns HIGH when the balance is exactly 50000', () => {
-    let balance: number = application.balance;
-    balance = 50000;
+    application.balance = 50000;
     expect(calculator.calculate(application)).toBe(RiskClass.HIGH);
   })
 
   test('returns HIGH for a negative balance', () => {
-    let balance: number = application.balance;
-    balance = -100;
+    application.balance = -100;
     expect(calculator.calculate(application)).toBe(RiskClass.HIGH);
   })
 })
